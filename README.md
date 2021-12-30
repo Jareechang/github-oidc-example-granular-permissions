@@ -1,4 +1,4 @@
-# Github OpenID connect with AWS (Granular permissions)
+# Github OpenID connect with AWS (Granular permissions) - update 1
 
 This is an example of Github Actions deployment to AWS with OpenID connect (OIDC) using terraform.
 
