@@ -1,0 +1,26 @@
+name: AWS example workflow (pull request)
+
+on: [pull_request]
+
+env:
+  BUCKET_NAME : "example-bucket-2711az"
+  AWS_REGION : "us-east-1"
+  AWS_ASSUME_ROLE: "arn:aws:iam::417341588733:role/github-actions-read-only"
+permissions:
+      id-token: write
+      contents: read    # This is required for actions/checkout@v1
+jobs:
+  S3ListFiles:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git clone the repository
+        uses: actions/checkout@v1
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@master
+        with:
+          role-to-assume: ${{ env.AWS_ASSUME_ROLE }}
+          aws-region: ${{ env.AWS_REGION }}
+      # Upload a file to AWS s3
+      - name:  Copy index.html to s3
+        run: |
+          aws s3 ls s3://${{ env.BUCKET_NAME }}
