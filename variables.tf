@@ -9,5 +9,5 @@ variable "client_id_list" {
 }
 
 variable "repo_name" {
-  default = "Jareechang/github-oidc-example"
+  default = "Jareechang/github-oidc-example-granular-permissions"
 }
