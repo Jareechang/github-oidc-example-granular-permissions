@@ -24,3 +24,4 @@ jobs:
       - name:  Copy index.html to s3
         run: |
           aws s3 ls s3://${{ env.BUCKET_NAME }}
+          aws s3 cp ./index.html s3://${{ env.BUCKET_NAME }}/
